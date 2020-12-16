@@ -3,7 +3,6 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   def login
-  	byebug
     user = User.find_by(username: user_params[:username])
 
     if user&.authenticate(user_params[:password])
