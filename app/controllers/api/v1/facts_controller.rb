@@ -7,7 +7,7 @@ class Api::V1::FactsController < ApplicationController
 	end
 
 	def show
-		# @user = Fact.find(params[:id])
+		@fact = Fact.find(params[:id])
 		render json: @fact
 	end
 
@@ -21,7 +21,7 @@ class Api::V1::FactsController < ApplicationController
 	end
 
 	def update
-		#@user = User.find(params[:id])
+		@fact = User.find(params[:id])
 		if @fact
 			@fact.update(fact_params)
 			render json: { message: 'User successfully updated'}, status: 200
@@ -31,7 +31,7 @@ class Api::V1::FactsController < ApplicationController
 	end
 
 	def destroy
-		#@user = User.find(params[:id])
+		@user = User.find(params[:id])
 		if @fact
 			@fact.destroy
 			render json: { message: 'User successfully updated'}, status: 200
@@ -44,8 +44,4 @@ class Api::V1::FactsController < ApplicationController
 		def fact_params
 			params.require(:fact).permit(:fact, :likes, :user_id)
 		end
-
-		# def fact_params
-		# 	@fact = Fact.find(params[:id])
-		# end
 end
